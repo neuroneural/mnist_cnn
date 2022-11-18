@@ -1,5 +1,5 @@
 
-from model import CNN
+from model.CNN import CNN
 import os
 from torch import nn, optim
 from torch.utils.data import DataLoader
@@ -20,7 +20,7 @@ model=CNN()
 optimizer = optim.Adam(model.parameters(), lr=0.02)
 
 callbacks=[
-        dl.AccuracyCallback(input_key="logits", target_key="targets", topk=(1, 3, 5)),
+        dl.AccuracyCallback(input_key="logits", target_key="targets", topk_args=(1, 3, 5)),
         dl.PrecisionRecallF1SupportCallback(input_key="logits", target_key="targets"),
     ]
 
